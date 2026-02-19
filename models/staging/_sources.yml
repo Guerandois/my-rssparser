@@ -1,0 +1,58 @@
+version: 2
+
+sources:
+  - name: csv  # Source system name
+    database: "my_rssdb_{{ target.name }}"    # Optional: database where source is stored
+    schema: raw_data  # Schema containing the source tables
+    tables:
+      # Table en COPY INTO à partir d'un stage snowflake
+      - name: calendrier
+      # Fichier plat stocké dans seeds
+      - name: calendrier_a_plat   # Table name as it exists in the database
+        description: ''
+        columns:
+        - name: CAL_DATE
+          description: 'Date du jour'
+          data_tests:
+            - not_null
+        - name: CAL_ANNEE
+          description: 'Année de la date'
+          data_tests:
+            - not_null
+        - name: CAL_MOIS
+          description: 'Mois de la date [1-12]'
+          data_tests:
+            - not_null
+        - name: CAL_JOUR
+          description: 'Jour de la date [1-31]'
+          data_tests:
+            - not_null
+        - name: CAL_QUARTER
+          description: 'Trimestre de la date [1 -4] '
+          data_tests:
+            - not_null
+        - name: __KEY_DATE
+          description: 'Clé primaire de la table'
+          data_tests:
+            - unique
+            - not_null
+        - name: CAL_TRIMESTRE
+          description: ''
+          data_tests:
+            - not_null
+        - name: CAL_TRIMESTRE_NUM
+          description: ''
+          data_tests:
+            - not_null
+        - name: CAL_JOUR_SEMAINE_NUM
+          description: ''
+          data_tests:
+            - not_null
+        - name: CAL_JOUR_SEMAINE
+          description: ''
+          data_tests:
+            - not_null
+        - name: CAL_JOUR_SEMAINE_ABR
+          description: ''
+          data_tests:
+            - not_null

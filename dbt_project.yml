@@ -1,0 +1,32 @@
+name: my-rssparser
+version: '1.0.0'
+config-version: 2
+profile: my-rssparser
+
+analysis-paths: ["analyses"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+
+## Target
+target-path: target
+clean-targets: [target, dbt_modules,dbt_internal_packages,logs]
+
+on-run-start:
+  - "{{ snowflake_create_database_schema() }}"
+  - "{{ snowflake_create_file_format() }}"
+#  - "{{ snowflake_create_tables() }}"
+  - "{{read_sql_file('scripts/ddl/table/calendrier.sql')}}"
+seeds:
+    +schema: raw_data 
+    +delimiter: ','
+
+## Models
+models:
+  my-rssparser:
+
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+  

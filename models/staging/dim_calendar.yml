@@ -1,0 +1,28 @@
+models:
+  # Model name must match the filename of a model -- including case sensitivity
+  - name: dim_calendar
+    description: 'Dimension calendrier de 2000 à 2040'
+    columns:
+      - name: CAL_DATE
+        description: 
+      - name: CAL_ANNEE
+        description: 'Année de la date'
+      - name: CAL_MOIS
+        description: 'Mois de la date [1-12]'
+      - name: CAL_JOUR
+        description: 'Jour de la date [1-31]'
+      - name: CAL_QUARTER
+        description: 'Trimestre de la date [1 -4] '
+      - name: __KEY_DATE
+        description: 'Clé primaire de la table'
+      - name: CAL_TRIMESTRE
+        description: ''
+      - name: CAL_TRIMESTRE_NUM
+        description: ''
+      - name: CAL_JOUR_SEMAINE_NUM
+        description: ''
+      - name: CAL_JOUR_SEMAINE
+        description: ''
+      - name: CAL_JOUR_SEMAINE_ABR
+        description: ''
+       
