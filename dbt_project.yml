@@ -10,16 +10,25 @@ seed-paths: ["seeds"]
 
 ## Target
 target-path: target
-clean-targets: [target, dbt_modules,dbt_internal_packages,logs]
+clean-targets: [target, dbt_packages, dbt_modules, dbt_internal_packages, logs]
+
+vars:
+  dev:
+    debug_mode: true
+    row_limit: 1000
+  prod:
+    debug_mode: false
 
 on-run-start:
   - "{{ snowflake_create_database_schema() }}"
   - "{{ snowflake_create_file_format() }}"
-#  - "{{ snowflake_create_tables() }}"
-  - "{{read_sql_file('scripts/ddl/table/calendrier.sql')}}"
+  - "{{ snowflake_create_tables() }}"
+#  - "{{read_sql_file('scripts/ddl/table/calendrier.sql')}}"
+
 seeds:
-    +schema: raw_data 
+    +schema: bronze 
     +delimiter: ','
+    +quote_columns: false     # Don't quote column names - keeps SQL cleaner
 
 ## Models
 models:
@@ -27,6 +36,8 @@ models:
 
     staging:
       +materialized: view
+      +schema: raw_data
     marts:
       +materialized: table
+      +schema: curated
   

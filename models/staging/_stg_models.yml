@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: stg_csv_calendar
+    description: >
+      Staging layer for transaction data. Excludes failed transactions.
+      Customer information is accessed through the account relationship.
+    columns:
+      - name: CAL_DATE
+        description: 'Date du jour'
+        tests:
+          - unique
+          - not_null
+        
+      - name: CAL_ANNEE
+        description: 'Année de la date'
+        tests:
+          - not_null
+
+      - name: CAL_MOIS
+        description: 'Mois de la date [1-12]'
+        tests:
+          - not_null
+
+      - name: CAL_JOUR
+        description: 'Jour de la date [1-31]'
+        tests:
+          - not_null
+
+      - name: CAL_QUARTER
+        description: 'Trimestre de la date [1 -4] '
+        tests:
+          - not_null
+
+      - name: __KEY_DATE
+        description: 'Clé primaire de la table'
+        tests:
+          - not_null
+
+      - name: CAL_TRIMESTRE
+        description: ''
+        tests:
+          - not_null
+
+      - name: CAL_TRIMESTRE_NUM
+        description: ''
+        tests:
+          - not_null
+
+      - name: CAL_JOUR_SEMAINE_NUM
+        description: ''
+        tests:
+          - not_null
+
+      - name: CAL_JOUR_SEMAINE
+        description: ''
+        tests:
+          - not_null
+
+      - name: CAL_JOUR_SEMAINE_ABR
+        description: ''
+        tests:
+          - not_null

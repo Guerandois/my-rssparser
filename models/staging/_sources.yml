@@ -3,10 +3,31 @@ version: 2
 sources:
   - name: csv  # Source system name
     database: "my_rssdb_{{ target.name }}"    # Optional: database where source is stored
-    schema: raw_data  # Schema containing the source tables
+    schema: bronze  # Schema containing the source tables
     tables:
+      - name: rss_articles
+        description: ''
+        columns:
+        - name: KEY
+          data_tests:
+            - not_null
+        - name: POSTID
+          data_tests:
+            - not_null
+        - name: TYPERSS
+          data_tests:
+            - not_null
+        - name: TITLE
+        - name: LINK
+          data_tests:
+            - not_null
+        - name: CONTENT
+        - name: LITECONTENT
+        - name: PUBLISHED
+          data_tests:
+            - not_null
       # Table en COPY INTO à partir d'un stage snowflake
-      - name: calendrier
+      #- name: calendrier
       # Fichier plat stocké dans seeds
       - name: calendrier_a_plat   # Table name as it exists in the database
         description: ''

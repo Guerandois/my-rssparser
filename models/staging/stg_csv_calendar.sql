@@ -1,5 +1,5 @@
 SELECT 
-    CAL_DATE::date                      as CAL_DATE
+    TO_DATE(CAL_DATE,'dd-mm-yyyy')         as CAL_DATE
     ,CAL_ANNEE::number(4)               as CAL_ANNEE
     ,CAL_MOIS::number(2)                as CAL_MOIS
     ,CAL_JOUR::number(2)                as CAL_JOUR
