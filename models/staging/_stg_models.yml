@@ -1,6 +1,41 @@
 version: 2
 
 models:
+  - name: stg_csv_communes
+    description: >
+      Staging layer for transaction data. Excludes failed transactions.
+      Customer information is accessed through the account relationship.
+    columns:
+      - name: COMMUNE_TYPE
+      - name: COMMUNE_CODE_INSEE
+      - name: REGION_CODE
+##        tests:
+#          - relationships:
+#              to: ref('stg_csv_regions')
+#              field: REGION_CODE
+      # TODO: add dataTest 
+      - name: DEPT_CODE
+      # TODO: add dataTest 
+      - name: COMMUNE_CODE_COLLECTIVITE
+      - name: COMMUNE_ARRONDISSEMENT
+      - name: COMMUNE_TYPE_INDICATEUR
+      - name: COMMUNE_NOM_MAJUSCULE
+      - name: COMMUNE_NOM
+      - name: COMMUNE_NOM_WITH_ARTICLE
+      - name: COMMUNE_CANTON
+      - name: COMMUNE_PARENTE
+  
+  - name: stg_csv_regions
+    columns:
+      - name: REGION_CODE
+      - name: REGION_COMMUNE_CODE
+
+      # TODO: add dataTest 
+      - name: REGION_TYPE_INDICATEUR
+      - name: REGION_NOM_MAJUSCULE
+      - name: REGION_NOM
+      - name: REGION_NOM_WITH_ARTICLE
+
   - name: stg_csv_calendar
     description: >
       Staging layer for transaction data. Excludes failed transactions.

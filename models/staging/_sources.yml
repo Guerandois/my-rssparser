@@ -5,6 +5,68 @@ sources:
     database: "my_rssdb_{{ target.name }}"    # Optional: database where source is stored
     schema: bronze  # Schema containing the source tables
     tables:
+      - name: commune_2022
+        description: 'Liste des communes de france en 2022'
+        columns:
+        - name: TYPECOM
+          description: Type de commune
+        - name: COM
+          description: Code commune
+        - name: REG
+          description: Code région
+        - name: DEP
+          description: 	Code département
+        - name: CTCD
+          description:
+        - name: ARR
+          description: 	Code arrondissement
+        - name: TNCC
+          description: 	Type de nom en clair
+        - name: NCC
+          description: Nom en clair (majuscules)
+        - name: NCCENR
+          description: Nom en clair (typographie riche)
+        - name: LIBELLE
+          description: Nom en clair (typographie riche) avec article
+        - name: CAN
+          description: Code canton. Pour les communes « multi-cantonales » code décliné de 99 à 90 (pseudo-canton) ou de 89 à 80 (communes nouvelles)
+        - name: COMPARENT
+          description: Code de la commune parente pour les arrondissements municipaux et les communes associées ou déléguées.
+
+      - name: departements
+        description: 'Liste des departements de france en 2022'
+        columns:
+        - name: DEP
+          description: Code département
+        - name: REG
+          description: Code région
+        - name: CHEFLIEU 
+          description: 	Code de la commune chef-lieu
+        - name: TNCC
+          description: Type de nom en clair
+        - name: NCC
+          description: Nom en clair (majuscules)
+        - name: NCCENR
+          description: Nom en clair (typographie riche)
+        - name: LIBELLE
+          description: Nom en clair (typographie riche) avec article
+
+      - name: region_2022
+        description: 'Liste des regions de france en 2022'
+        columns:
+          - name: REG
+            description: Code région
+          - name: CHEFLIEU
+            description: Code de la commune chef-lieu
+          - name: TNCC
+            description: 	Type de nom en clair
+          - name: NCC
+            description: Nom en clair (majuscules)
+          - name: NCCENR
+            description: Nom en clair (typographie riche)
+          - name: LIBELLE
+            description: Nom en clair (typographie riche) avec article
+      
       - name: rss_articles
         description: ''
         columns:
@@ -26,8 +88,7 @@ sources:
         - name: PUBLISHED
           data_tests:
             - not_null
-      # Table en COPY INTO à partir d'un stage snowflake
-      #- name: calendrier
+      
       # Fichier plat stocké dans seeds
       - name: calendrier_a_plat   # Table name as it exists in the database
         description: ''

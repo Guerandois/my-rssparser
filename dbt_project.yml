@@ -33,7 +33,11 @@ seeds:
 ## Models
 models:
   my-rssparser:
-
+#    +pre-hook:
+#      - "{{ snowflake_create_database_schema() }}"
+#      - "{{ snowflake_create_file_format() }}"
+#      - "{{ snowflake_create_tables() }}"
+    
     staging:
       +materialized: view
       +schema: raw_data

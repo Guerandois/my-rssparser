@@ -1,6 +1,8 @@
 version: 2
 
 seeds:
+  # Calendrier
+  # ===========================
   - name: calendrier_a_plat
     config:
       column_types:
@@ -15,3 +17,46 @@ seeds:
         CAL_JOUR_SEMAINE_NUM: varchar
         CAL_JOUR_SEMAINE: varchar
         CAL_JOUR_SEMAINE_ABR: varchar
+      
+  # Liste des communes de France
+  # ===========================
+  - name: commune_2022
+    config:
+      column_types:
+        TYPECOM: varchar
+        COM: varchar
+        REG: varchar
+        DEP: varchar
+        CTCD: varchar
+        ARR: varchar
+        TNCC: varchar
+        NCC: varchar
+        NCCENR: varchar
+        LIBELLE: varchar
+        CAN: varchar
+        COMPARENT: varchar
+      
+  # Liste des départements de France
+  # ===========================
+  - name: departements_2022
+    config:
+      column_types:
+        DEP: varchar
+        REG: varchar
+        CHEFLIEU: varchar
+        TNCC: varchar
+        NCC: varchar
+        NCCENR: varchar
+        LIBELLE: varchar
+  
+  # Liste des regions de France
+  # ===========================
+  - name: region_2022
+    config:
+      column_types:
+        REG: varchar
+        CHEFLIEU: varchar
+        TNCC: varchar
+        NCC: varchar
+        NCCENR: varchar
+        LIBELLE: varchar

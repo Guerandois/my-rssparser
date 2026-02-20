@@ -1,5 +1,5 @@
 
-dbt-core/target/
-dbt-core/dbt_packages/
-dbt-core/logs/
-dbt-core/dbt_internal_packages/
+my-rssparser/target/
+my-rssparser/dbt_packages/
+my-rssparser/logs/
+my-rssparser/dbt_internal_packages/
