@@ -1,3 +1,6 @@
+-- macros/log_run.sql
+{% set start_time = modules.datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") %}
+
 SELECT 
     TO_DATE(CAL_DATE,'dd-mm-yyyy')         as CAL_DATE
     ,CAL_ANNEE::number(4)               as CAL_ANNEE
@@ -11,3 +14,7 @@ SELECT
     ,CAL_JOUR_SEMAINE::varchar(20)      as CAL_JOUR_SEMAINE 
     ,CAL_JOUR_SEMAINE_ABR::varchar(2)   as CAL_JOUR_SEMAINE_ABR
 FROM {{ source('csv', 'calendrier_a_plat') }}
+
+
+{% set end_time = modules.datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") %}
+{% do log_run(this.name, this.status, start_time,end_time) %}

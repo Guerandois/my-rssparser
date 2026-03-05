@@ -24,6 +24,11 @@ on-run-start:
   - "{{ snowflake_create_file_format() }}"
   - "{{ snowflake_create_tables() }}"
 #  - "{{read_sql_file('scripts/ddl/table/calendrier.sql')}}"
+  - "{{ create_run_end_results_table() }}"
+
+on-run-end:
+  - "{{ log_run_end_results(results) }}"
+
 
 seeds:
     +schema: bronze 
@@ -34,6 +39,7 @@ seeds:
 models:
   my-rssparser:
 #    +pre-hook:
+#      - "{{ log_run(this.name, this.status, 1.23) }}"
 #      - "{{ snowflake_create_database_schema() }}"
 #      - "{{ snowflake_create_file_format() }}"
 #      - "{{ snowflake_create_tables() }}"

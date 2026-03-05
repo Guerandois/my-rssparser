@@ -1,3 +1,5 @@
+{% set start_time = modules.datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") %}
+
 select 
     REG::number(2)              as REGION_CODE
     , CHEFLIEU::varchar(5)      as REGION_COMMUNE_CODE
@@ -7,4 +9,7 @@ select
     , LIBELLE::varchar(200)     as REGION_NOM_WITH_ARTICLE
 FROM {{ source('csv', 'region_2022') }}
 
+
+{% set end_time = modules.datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") %}
+{% do log_run(this.name, this.run_status, start_time,end_time) %}
 

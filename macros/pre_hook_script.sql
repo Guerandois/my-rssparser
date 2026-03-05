@@ -29,11 +29,19 @@
     {{ log("✅ Snowflake file format created or already exists", info=True) }}
 {% endmacro %}
 
-
 {% macro snowflake_create_tables() %}
     {% set sql %}
 
-    create or replace TABLE bronze.rss_articles (
+    create TABLE IF NOT EXISTS bronze.dbt_run_logs (
+        run_invocation_id    varchar,
+        model_name       string,
+        run_started_at   datetime,
+        run_finished_at  datetime,
+        status           string,
+        execution_time_s float
+    );  
+
+    create TABLE IF NOT EXISTS bronze.rss_articles (
         KEY VARCHAR,
         POSTID VARCHAR,
         TYPERSS VARCHAR,

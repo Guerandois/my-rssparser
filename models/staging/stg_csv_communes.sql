@@ -1,3 +1,6 @@
+
+{% set start_time = modules.datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") %}
+
 select 
     TYPECOM::varchar(4)     as COMMUNE_TYPE
     , COM::varchar(5)       as COMMUNE_CODE_INSEE
@@ -12,5 +15,9 @@ select
     , CAN::varchar(5)       as COMMUNE_CANTON
     , COMPARENT::varchar(5)  as COMMUNE_PARENTE
 FROM {{ source('csv', 'commune_2022') }}
+
+
+{% set end_time = modules.datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") %}
+{% do log_run(this.name, this.status, start_time,end_time) %}
 
 

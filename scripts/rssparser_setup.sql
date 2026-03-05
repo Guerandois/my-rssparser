@@ -42,7 +42,7 @@ CREATE OR REPLACE GIT REPOSITORY db_git_repo.public.my_rssparser
 -- SHOW GIT REPOSITORIES;
 
 
-COPY INTO raw_data.calendrier
+COPY INTO bronze.rss_articles
 FROM @lst_csv_files
 FILE_FORMAT = (FORMAT_NAME = 'ff_rss_csv_format')
 ON_ERROR = 'CONTINUE';

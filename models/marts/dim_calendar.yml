@@ -1,5 +1,10 @@
 models:
   # Model name must match the filename of a model -- including case sensitivity
+  - name: dim_geographie
+    description: 'Dimension géographique'
+    columns:
+      - name: CODE_GEOGRAPHIE
+
   - name: dim_calendar
     description: 'Dimension calendrier de 2000 à 2040'
     columns:
